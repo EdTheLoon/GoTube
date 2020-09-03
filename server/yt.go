@@ -25,7 +25,7 @@ func downloadVideo(url string, format string, s *Server, filename string) {
 		"--audio-quality", "0",
 		"--metadata-from-title", "'%(artist)s - %(title)s'",
 		// "--embed-thumbnail",
-		"-o", s.GetDownloadsDir()+"/"+filename,
+		"-o", s.GetDownloadsDir()+"/"+filename+".%(ext)s",
 		"--add-metadata",
 		url).CombinedOutput()
 
@@ -46,7 +46,7 @@ func downloadAudio(url string, format string, s *Server, filename string) {
 		"--audio-quality", "0",
 		"--metadata-from-title", "'%(artist)s - %(title)s'",
 		// "--embed-thumbnail",
-		"-o", s.GetDownloadsDir()+"/"+filename,
+		"-o", s.GetDownloadsDir()+"/"+filename+".%(ext)s",
 		"--add-metadata",
 		url).CombinedOutput()
 
