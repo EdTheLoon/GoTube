@@ -2,13 +2,13 @@ package main
 
 import (
 	"net/http"
-
+	
 	"github.com/EdTheLoon/GoTube/server"
 )
 
 func main() {
 	// Create a new server
-	s := server.NewServer("/tmp", "/srv/gotube/assets", "/var/log/gotube.log")
+	s := server.NewServer("/tmp/yt", "/srv/gotube", "/var/log/gotube.log")
 	defer s.CloseLog()
 
 	// TODO: Get specified port from config or command line
