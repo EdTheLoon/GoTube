@@ -1,0 +1,22 @@
+<html>
+    <head>
+        <title>GoTube</title>
+    </head>
+
+    <body>
+        <h1>Welcome to GoTube!</h1>
+        The website is still being coded but you can use URLs to interact with the server.<br>
+        <h3>/getVideoDetails/{url}</h3>
+            {url} is just the video ID without the full youtube link<br>
+
+        <h3>/getVideo/{url}/{format}/{filename}</h3>
+            {url} is just the video ID without the full youtube link<br>
+            {format} is the video format from youtube, use "best" if in doubt<br>
+            {filename} is the filename to save it as including file extension<br>
+
+        <h3>/getAudio/{url}/{format}/{filename}</h3>
+            {url} is just the video ID without the full youtube link<br>
+            {format} is the format to save the file as, use "mp3" if in doubt<br>
+            {filename} is the filename to save it as including file extension. Use "mp4" if in doubt<br>
+    </body>
+</html>
