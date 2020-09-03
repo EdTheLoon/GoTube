@@ -39,6 +39,9 @@ func (s *Server) getVideo(w http.ResponseWriter, r *http.Request) {
 	s.Log("Downloading video (" + format + "): " + url)
 	downloadVideo(url, format, s, filename)
 
+	// For now just redirect to the folder for download
+	http.Redirect(w, r, "https://reids.scot/yt/", http.StatusSeeOther)
+
 	// TO DO: Send the response HTML pages.
 }
 
@@ -51,6 +54,9 @@ func (s *Server) getAudio(w http.ResponseWriter, r *http.Request) {
 	// CARRY OUT SOME URL VALIDATION HERE IN THE FUTURE
 	s.Log("Downloading audio (" + format + "): " + url)
 	downloadAudio(url, format, s, filename)
+
+	// For now just redirect to the folder for download
+	http.Redirect(w, r, "https://reids.scot/yt/", http.StatusSeeOther)
 
 	// TO DO: Send the response HTML pages.
 }
