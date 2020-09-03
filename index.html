@@ -1,22 +1,61 @@
+<!DOCTYPE html>
 <html>
-    <head>
-        <title>GoTube</title>
-    </head>
 
-    <body>
-        <h1>Welcome to GoTube!</h1>
-        The website is still being coded but you can use URLs to interact with the server.<br>
-        <h3>/getVideoDetails/{url}</h3>
-            {url} is just the video ID without the full youtube link<br>
+<head>
+    <title>GoTube</title>
 
-        <h3>/getVideo/{url}/{format}/{filename}</h3>
-            {url} is just the video ID without the full youtube link<br>
-            {format} is the video format from youtube, use "best" if in doubt<br>
-            {filename} is the filename to save it as including file extension<br>
+    <script type="text/javascript">
+        function YouTubeGetID(url) {
+            var ID = '';
+            url = url.replace(/(>|<)/gi, '').split(/(vi\/|v=|\/v\/|youtu\.be\/|\/embed\/)/);
+            if (url[2] !== undefined) {
+                ID = url[2].split(/[^0-9a-z_\-]/i);
+                ID = ID[0];
+            }
+            else {
+                ID = url;
+            }
+            return ID;
+        }
 
-        <h3>/getAudio/{url}/{format}/{filename}</h3>
-            {url} is just the video ID without the full youtube link<br>
-            {format} is the format to save the file as, use "mp3" if in doubt<br>
-            {filename} is the filename to save it as including file extension. Use "mp4" if in doubt<br>
-    </body>
+        function videoDL() {
+            url = document.getElementById("txt_url").value;
+            id = YouTubeGetID(url);
+            filename = document.getElementById("txt_name").value;
+            window.location.href = "https://reids.scot/gotube/getVideo/" + id + "/best/" + filename;
+        }
+
+        function audioDL() {
+            url = document.getElementById("txt_url").value;
+            id = YouTubeGetID(url);
+            filename = document.getElementById("txt_name").value;
+            window.location.href = "https://reids.scot/gotube/getAudio/" + id + "/mp3/" + filename;
+        }
+    </script>
+</head>
+
+<body>
+    <h1>Welcome to GoTube!</h1>
+
+    <label for="txt_url">YouTube Video ID</label>
+    <input id="txt_url"><br>
+    <label for="txt_name">Filename without extension</label>
+    <input id="txt_name"><br>
+    <button id="btn_video" type="submit" onclick="videoDL()">Video</button>
+    <button id="btn_audio" type="submit" onclick="audioDL()">Audio</button>
+
+    <h3>/getVideoDetails/{url}</h3>
+    {url} is just the video ID without the full youtube link<br>
+
+    <h3>/getVideo/{url}/{format}/{filename}</h3>
+    {url} is just the video ID without the full youtube link<br>
+    {format} is the video format from youtube, use "best" if in doubt<br>
+    {filename} is the filename to save it as including file extension<br>
+
+    <h3>/getAudio/{url}/{format}/{filename}</h3>
+    {url} is just the video ID without the full youtube link<br>
+    {format} is the format to save the file as, use "mp3" if in doubt<br>
+    {filename} is the filename to save it as including file extension. Use "mp4" if in doubt<br>
+</body>
+
 </html>
