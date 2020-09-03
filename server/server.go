@@ -41,7 +41,7 @@ func NewServer(outputDir string, assetsDir string, log string) Server {
 	// Create the output directory if it does not exist
 	_, err = os.Stat(s.outputDir)
 	if err != nil {
-		os.MkdirAll(s.outputDir, 0700)
+		os.MkdirAll(s.outputDir, 0775)
 		s.Log("Created output directory: " + s.outputDir)
 	}
 
