@@ -13,5 +13,8 @@ func (s *Server) routes() {
 	s.router.HandleFunc("/getVideoDetails/{url}", s.getVideoDetails)
 
 	// Download video
-	s.router.HandleFunc("/getVideo/{url}", s.getVideo)
+	s.router.HandleFunc("/getVideo/{url}/{format}/{filename}", s.getVideo)
+
+	// Download audio
+	s.router.HandleFunc("/getAudio/{url}/{format}/{filename}", s.getAudio)
 }

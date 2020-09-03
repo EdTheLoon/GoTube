@@ -32,7 +32,25 @@ func (s *Server) getVideoDetails(w http.ResponseWriter, r *http.Request) {
 func (s *Server) getVideo(w http.ResponseWriter, r *http.Request) {
 	vars := mux.Vars(r)
 	url := vars["url"]
+	format := vars["format"]
+	filename := vars["filename"]
 
 	// CARRY OUT SOME URL VALIDATION HERE IN THE FUTURE
-	s.Log("Downloading video: " + url)
+	s.Log("Downloading video (" + format + "): " + url)
+	downloadVideo(url, format, s, filename)
+
+	// TO DO: Send the response HTML pages.
+}
+
+func (s *Server) getAudio(w http.ResponseWriter, r *http.Request) {
+	vars := mux.Vars(r)
+	url := vars["url"]
+	format := vars["format"]
+	filename := vars["filename"]
+
+	// CARRY OUT SOME URL VALIDATION HERE IN THE FUTURE
+	s.Log("Downloading audio (" + format + "): " + url)
+	downloadAudio(url, format, s, filename)
+
+	// TO DO: Send the response HTML pages.
 }

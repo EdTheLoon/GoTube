@@ -8,10 +8,11 @@ import (
 )
 
 // The Server struct
-// outputDir	 	The filesystem location of keys
+// outputDir	 	The filesystem location of videos
 // assetsDir		The filesystem location of static assets
 // router			The HTTP router to be used
 // fs				The FileServer for static files
+// log				The location for log files
 type Server struct {
 	outputDir string
 	assetsDir string
@@ -54,7 +55,7 @@ func (s *Server) GetRouter() *mux.Router {
 	return s.router
 }
 
-// getDownloadsDir returns the directory to store downloads
+// GetDownloadsDir returns the directory to store downloads
 func (s *Server) GetDownloadsDir() string {
 	return s.outputDir
 }
