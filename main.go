@@ -8,8 +8,12 @@ import (
 
 func main() {
 	// Create a new server
-	s := server.NewServer("/tmp/yt", "/srv/gotube", "/var/log/gotube.log")
+	s := server.NewServer("/tmp/yt", "/srv/gotube/", "/var/log/gotube.log")
 	defer s.CloseLog()
+
+	// DEBUG
+	s.Log("Download output directory: " + s.GetDownloadsDir())
+	s.Log("Assets directory: " + s.GetAssetsDir())
 
 	// TODO: Get specified port from config or command line
 	port := "6060"
