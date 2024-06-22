@@ -33,7 +33,7 @@ func NewServer(outputDir string, assetsDir string, log string) Server {
 	s := Server{
 		outputDir,
 		assetsDir,
-		mux.NewRouter(),
+		mux.NewRouter().UseEncodedPath(),
 		http.FileServer(http.Dir(assetsDir)),
 		f,
 	}
@@ -58,4 +58,9 @@ func (s *Server) GetRouter() *mux.Router {
 // GetDownloadsDir returns the directory to store downloads
 func (s *Server) GetDownloadsDir() string {
 	return s.outputDir
+}
+
+// GetAssetsDir returns the directory to serve assets from
+func (s *Server) GetAssetsDir() string {
+	return s.assetsDir
 }
